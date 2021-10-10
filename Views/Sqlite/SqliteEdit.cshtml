@@ -1,0 +1,49 @@
+﻿@model SimpleSqlite.Models.TestDb
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SqliteEdit</title>
+</head>
+<body>
+
+<h4>TestDb</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SqliteEdit" asp-antiforgery="true">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="id" class="control-label" style="display:none"></label>
+                <input asp-for="id"  class="form-control" type="hidden" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatNumber" class="control-label"></label>
+                <input asp-for="SeatNumber" class="form-control" />
+                <span asp-validation-for="SeatNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="SqliteMaster">Back to List</a>
+</div>
+
+</body>
+</html>

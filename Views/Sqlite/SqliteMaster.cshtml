@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SimpleSqlite.Models.TestDb>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SqliteMaster</title>
+</head>
+<body>
+<p>
+    <a asp-action="SqliteCreate">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatNumber)
+            </td>
+            <td>
+                @* Razor語法 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                編譯後會變成HTML格式，這個是超連結的意思，如果透過系統自動套版產生的話，記得連結路徑要改
+                後面的ID也要改，不然會因為找不到ID而報錯，PrimaryKey改成資料表內自己的PK ID 名字就可以了
+                *@
+                @Html.ActionLink("Edit", "SqliteEdit", new { ID = item.id }) |
+                @Html.ActionLink("Details", "SqliteDetails", new { ID = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { ID = item.id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
